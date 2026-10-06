@@ -2,31 +2,32 @@ const form = document.querySelector("#commandCenter");
 const inputField = document.querySelector("#commandInput");
 const outputDisplay = document.querySelector("#output");
 
-const commands = {
-  pepper: () => displayOutput("Pepper command activated!", "text"),
-  clear: () => (outputDisplay.textContent = ""),
-};
-
 function displayOutput(string, type) {
-  const prefix = type === "error" ? "Error: " : "Output: ";
-  outputDisplay.textContent += `${prefix}${string}\n`;
+  if (type === "text") {
+    outputDisplay.textContent += `Output: ${string}\n`;
+  } else if (type === "error") {
+    outputDisplay.textContent += `Error: ${string}\n`;
+  }
 }
 
 function commandCenter(inputValue) {
-  const command = inputValue.trim().toLowerCase();
-
-  if (commands[command]) {
-    commands[command]();
-  } else {
+  if (!inputValue || inputValue.trim() === "") {
     displayOutput("Unknown command.", "error");
+    return;
+  }
+
+  if (inputValue === "clear") {
+    outputDisplay.textContent = "";
+  } else {
+    displayOutput(`Executed '${inputValue}' successfully.`, "text");
   }
 }
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+  let input = inputField.value;
 
-  if (!inputField.value) return;
+  commandCenter(input);
 
-  commandCenter(inputField.value);
   inputField.value = "";
 });
