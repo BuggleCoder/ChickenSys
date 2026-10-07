@@ -44,7 +44,7 @@ function commandCenter(inputValue) {
     displayOutput("Unknown command.", "error");
   } else if (command === "help") {
     displayOutput(
-      "Here are some helpful commands: \n clear \n time \n date",
+      "Here are some helpful commands: \n clear \n time \n date \n echo",
       "text",
     );
   } else if (command === "time") {
