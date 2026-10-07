@@ -1,5 +1,8 @@
 // Variables
 
+let previousCommands = [];
+let usedCommands = 0;
+
 const form = document.querySelector("#commandCenter");
 const inputField = document.querySelector("#commandInput");
 const outputDisplay = document.querySelector("#output");
@@ -17,6 +20,10 @@ function displayOutput(string, type) {
 // Define Commands
 
 function commandCenter(inputValue) {
+  if (previousCommands[usedCommands + 1] == "echo") {
+    displayOutput(inputValue);
+  }
+
   let trimmedValue = inputValue.trim();
 
   if (!trimmedValue) {
@@ -47,9 +54,13 @@ function commandCenter(inputValue) {
       `Date: ${date.getDay()} / ${date.getMonth()} / ${date.getFullYear()}`,
       "text",
     );
+  } else if (command === "echo") {
+    displayOutput("Awaiting input:", "text");
   } else {
     displayOutput(`Executed '${command}' successfully.`, "text");
   }
+  usedCommands++;
+  previousCommands.append(command);
 }
 
 // Form Submit
