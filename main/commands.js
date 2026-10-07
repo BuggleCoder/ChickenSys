@@ -34,7 +34,7 @@ function commandCenter(inputValue) {
   } else if (command === "help") {
     displayOutput("Commands: \n Clear \n time", "text");
   } else if (command === "time") {
-    displayOutput(`Time: ${date.getHours}: ${date.getMinutes}`, "text");
+    displayOutput(`Time: ${date.getHours()}: ${date.getMinutes()}`, "text");
   } else {
     displayOutput(`Executed '${command}' successfully.`, "text");
   }
