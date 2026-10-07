@@ -1,3 +1,5 @@
+// Variables
+
 const form = document.querySelector("#commandCenter");
 const inputField = document.querySelector("#commandInput");
 const outputDisplay = document.querySelector("#output");
@@ -11,6 +13,8 @@ function displayOutput(string, type) {
     outputDisplay.textContent += `Error: ${string}\n`;
   }
 }
+
+// Define Commands
 
 function commandCenter(inputValue) {
   let trimmedValue = inputValue.trim();
@@ -39,6 +43,8 @@ function commandCenter(inputValue) {
     displayOutput(`Executed '${command}' successfully.`, "text");
   }
 }
+
+// Form Submit
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
