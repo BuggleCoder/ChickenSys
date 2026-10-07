@@ -36,7 +36,10 @@ function commandCenter(inputValue) {
   } else if (command === "") {
     displayOutput("Unknown command.", "error");
   } else if (command === "help") {
-    displayOutput("Here are some helpful commands: \n clear \n time", "text");
+    displayOutput(
+      "Here are some helpful commands: \n clear \n time \n date",
+      "text",
+    );
   } else if (command === "time") {
     displayOutput(`Time: ${date.getHours()}: ${date.getMinutes()}`, "text");
   } else if (command === "date") {
